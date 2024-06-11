@@ -1,14 +1,7 @@
 "use client"
-
-import { useGetAllCourses } from "@/services/courses";
+import CourseList from "@/components/core/CourseList";
 
 export default function Home() {
-
-const { data : allcourses} = useGetAllCourses()
-
-  console.log(allcourses, "allcourses")
-
-
   // const addCourse = async () => {
 
   //   const sampleCourse = {
@@ -33,9 +26,11 @@ const { data : allcourses} = useGetAllCourses()
   // };
 
   return (
-    <div className="min-h-screen bg-black  text-white">
-      <button className="bg-white rounded-xl p-2  text-black px-8 capitalize">click</button>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit ratione, ipsum ab optio quaerat eum fugit harum sequi odio autem. Numquam dolore incidunt quisquam quaerat laudantium animi minus ut similique?</p>
+    <div className="min-h-screen bg-white flex justify-center ">
+      <div className=" w-full min-h-screen h-full text-black xl:max-w-[1300px]">
+        <CourseList />
+      </div>
     </div>
   );
 }
+
