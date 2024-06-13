@@ -1,5 +1,5 @@
 import { db } from "@/configs/firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 
 
 export const getAllCourses = async () => {
@@ -12,3 +12,10 @@ export const getAllCourses = async () => {
         return error?.message
     }
 }
+
+export const getSyllabusc = async (id: string) => {
+    const courseRef = doc(db, "syllabuses", id);
+    const courseSnap:any = await getDoc(courseRef);
+    return { id: courseSnap.id, ...courseSnap.data()}
+}
+
