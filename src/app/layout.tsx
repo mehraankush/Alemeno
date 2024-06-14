@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/common/Navbar";
 import ReactQueryProvider from "@/components/Providers/ReactQueryProvider";
 import ReactReduxProvider from "@/components/Providers/ReactReduxProvider";
-
+import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,6 +22,7 @@ export default function RootLayout({
         <ReactQueryProvider>
           <body className={inter.className}>
             {children}
+            <Toaster/>
           </body>
         </ReactQueryProvider>
       </ReactReduxProvider>

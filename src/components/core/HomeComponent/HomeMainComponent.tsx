@@ -39,6 +39,8 @@ const HomeMainComponent = () => {
     }, [allcourses]);
 
     const handleSearch = (searchTerm: any) => {
+
+        
         const lowercasedSearchTerm = searchTerm.toLowerCase();
         const filtered = allcourses?.filter((course: any) =>
             course.name.toLowerCase().includes(lowercasedSearchTerm) ||
