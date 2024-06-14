@@ -82,7 +82,7 @@ function CourseCard({
               target={CourseEnrollmentClosed || CourseUpcoming ? '' : '_blank'}
               className="w-full text-center p-3 rounded-xl text-white h-auto bg-indigo-600 hover:bg-indigo-700"
             >
-             Enroll Now
+              Enroll Now
             </Link>
           </div>
         </div>
