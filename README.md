@@ -29,7 +29,7 @@ This project is a Course Management Platform where users can view, enroll in, an
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-repo/course-management-platform.git
-   cd course-management-platform```
+   cd Alemeno```
 
 2. Instalk dependencies:
     ```bash
