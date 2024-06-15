@@ -1,6 +1,6 @@
 # [Alemeno Education](https://alemeno-zeta.vercel.app/)
 
-[![asciicast](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/hK3gVEro1Pg)
+## [VIDEO LINK](https://www.youtube.com/watch?v=hK3gVEro1Pg)
 
 ## Introduction
 This project is a Course Management Platform where users can view, enroll in, and mark courses as completed. It leverages modern web technologies and Firebase for backend services.
