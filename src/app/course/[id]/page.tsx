@@ -1,40 +1,16 @@
 "use client"
+import React from 'react'
 import CourseCard from '@/components/common/CourseCard';
 import CourseOverview from '@/components/core/CourseOverview';
-import CourseSyllabus from '@/components/core/CourseSyllabus';
 import FAQ_Section from '@/components/core/FAQ_Section';
-import { db } from '@/configs/firebase';
-import { doc, getDoc } from 'firebase/firestore';
-import { ArrowRight, ArrowRightCircle, ChevronLeft, ChevronRight, Globe, Star, Video } from 'lucide-react';
+import { useGetCoursesById } from '@/services/courses';
+import { ChevronRight, Globe, Star, Video } from 'lucide-react';
 import Link from 'next/link';
-import React, { useEffect, useState } from 'react'
 
 const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
-    const [courseData, setCourseData] = useState<any>()
+    const { data: courseData, isLoading } = useGetCoursesById(params.id)
 
-    console.log(params, "ids")
-    useEffect(() => {
-        if (params.id) {
-            const fetchCourse = async () => {
-                try {
-                    const courseRef = doc(db, "course", params.id);
-                    const courseSnap = await getDoc(courseRef);
-                    if (courseSnap.exists()) {
-                        // console.table({ id: courseSnap.id, ...courseSnap.data() });
-                        setCourseData({ id: courseSnap.id, ...courseSnap.data() })
-                    } else {
-                        console.error("Course not found");
-                    }
-                } catch (error: any) {
-                    console.error("Error fetching course: " + error.message);
-                }
-            };
 
-            fetchCourse();
-        }
-    }, [params.id]);
-
-    console.log(courseData, "corsedata")
     return (
         <div className="min-h-screen bg-black flex justify-center ">
 
@@ -118,9 +94,6 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
                                 <CourseCard
                                     CourseBannerData={courseData?.thumbnail}
                                     CourseCardData={courseData}
-                                    CourseEnrollmentClosed={false}
-                                    CourseEnrollmentLink={''}
-                                    CourseUpcoming={true}
                                 />
                             </div>
                         </div>
@@ -130,14 +103,6 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
                 <div className="mx-auto max-w-[1200px] flex pt-4 px-4 sm:px-10 xl:px-0">
                     <CourseOverview courseData={courseData} />
                     <div className="relative w-full max-w-[500px] px-8 hidden lg:flex">
-
-                        {/* <MovingCard
-                            CourseBannerData={courseData?.attributes?.CourseBanner}
-                            CourseCardData={courseData?.attributes?.CourseCard}
-                            CourseEnrollmentClosed={courseData?.attributes?.enrollmentClosed}
-                            CourseEnrollmentLink={courseData?.attributes?.enrollmentLink}
-                            CourseUpcoming={courseData?.attributes?.isUpcoming}
-                        /> */}
                     </div>
                 </div>
                 {/* FAQ Section */}

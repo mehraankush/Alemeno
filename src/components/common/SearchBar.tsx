@@ -2,14 +2,20 @@
 import { debounce } from '@/utils/debounce';
 import React, { useEffect, useState } from 'react'
 
-const SearchBar = ({ onSearch }: any) => {
+type NavProps = {
+  onSearch?: any;
+}
+
+const SearchBar = ({ onSearch }: NavProps) => {
 
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const debouncedSearch = debounce(onSearch, 500);
-    debouncedSearch(searchTerm);
-  }, [searchTerm]);
+    if(onSearch){
+      const debouncedSearch = debounce(onSearch, 500);
+      debouncedSearch(searchTerm);
+    }
+  }, [searchTerm,onSearch]);
 
   const handleChange = (e: any) => {
     setSearchTerm(e.target.value);

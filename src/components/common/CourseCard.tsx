@@ -1,26 +1,96 @@
+"use client"
 import Image from "next/image";
-import React from "react";
-import Link from "next/link";
-import { CheckCircle } from "lucide-react";
+import { useRouter } from "next/navigation";
+import React, { useState } from "react";
+import { toast } from "../ui/use-toast";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { db } from "@/configs/firebase";
+import useAuth from "@/CustomHooks/use-user";
+import useStoreUser from "@/CustomHooks/use-auth";
 
 type Props = {
   CourseBannerData: any;
   CourseCardData: any;
-  CourseEnrollmentClosed: boolean;
-  CourseEnrollmentLink: string;
-  CourseUpcoming: boolean;
-  videoVal?: string;
 };
-;
+
 
 function CourseCard({
   CourseBannerData,
   CourseCardData,
-  CourseEnrollmentClosed,
-  CourseEnrollmentLink,
-  CourseUpcoming,
-  videoVal,
 }: Props) {
+
+  const user: any = useAuth();
+  const router = useRouter();
+  const [newuserData, setNewuserData] = useState<any[]>();
+  const setuser = useStoreUser(newuserData)
+
+  const handleEnroll = async (courseId: string) => {
+    if (!user) {
+      toast({
+        duration: 1000,
+        title: "You are not logged in",
+      });
+      router.push('/');
+      return;
+    }
+
+    try {
+      const studentDocRef = doc(db, "student", user?.id);
+      const courseDocRef = doc(db, "course", courseId);
+
+      // Fetch the student's document
+      const studentDoc = await getDoc(studentDocRef);
+
+      if (studentDoc.exists()) {
+        const studentData = studentDoc.data();
+
+        // Check if the user is already enrolled in the course
+        if (studentData.enrolledCourses && studentData.enrolledCourses.includes(courseId)) {
+          toast({
+            duration: 1000,
+            title: "You are already enrolled in this course",
+          });
+          return;
+        }
+
+        // Add courseId to enrolledCourses in students collection
+        const res1 = await updateDoc(studentDocRef, {
+          enrolledCourses: arrayUnion(courseId)
+        });
+        const updatedUser = await getDoc(studentDocRef);
+        const newUserData: any = ({ id: updatedUser.id, ...updatedUser.data() })
+        setNewuserData(newUserData)
+        // Add studentId to enrolledStudents in courses collection
+        const res2 = await updateDoc(courseDocRef, {
+          enrolledStudents: arrayUnion(user?.id)
+        });
+
+        // console.log({ res1, res2 });
+
+        toast({
+          duration: 1000,
+          title: "Enrollment Successful",
+          description: "You have been enrolled in the course.",
+        });
+      } else {
+        console.error("No such document!");
+        toast({
+          variant: "destructive",
+          title: "Enrollment Failed",
+          description: "Student document does not exist.",
+        });
+      }
+    } catch (error) {
+      console.error("Error enrolling in course: ", error);
+      toast({
+        variant: "destructive",
+        title: "Enrollment Failed",
+        description: "There was an error enrolling in the course.",
+      });
+    }
+  };
+
+  // console.log("CourseCardData", CourseCardData)
   return (
     <>
       <div
@@ -70,20 +140,14 @@ function CourseCard({
 
           {/* Buttons */}
           <div className="flex items-center gap-4 self-stretch flex-col-reverse sm:flex-row sm:items-start">
-            {/* <CTAButtonComponenet className="bg-neutral-7 hover:bg-neutral-8">Start your free trail</CTAButtonComponenet> */}
-            <Link
-              href={
-                CourseUpcoming
-                  ? "#"
-                  : CourseEnrollmentClosed
-                    ? CourseEnrollmentLink
-                    : CourseBannerData?.RazorPayLink
-              }
-              target={CourseEnrollmentClosed || CourseUpcoming ? '' : '_blank'}
-              className="w-full text-center p-3 rounded-xl text-white h-auto bg-indigo-600 hover:bg-indigo-700"
+
+            <button
+              onClick={() => handleEnroll(CourseCardData?.id)}
+              className={` ${CourseCardData?.enrolledStudents?.includes(user?.id) ? "bg-green-600 hover:bg-green-700" : "bg-indigo-600 hover:bg-indigo-700"} w-full text-center p-3 rounded-xl text-white h-auto `}
             >
-              Enroll Now
-            </Link>
+              {CourseCardData?.enrolledStudents?.includes(user?.id) ? "Start Learning" : "Enroll Now"}
+
+            </button>
           </div>
         </div>
       </div>

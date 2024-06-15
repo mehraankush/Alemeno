@@ -30,7 +30,7 @@ const HomeMainComponent = () => {
     //     console.error("Error adding course: ", error);
     //   }
     // };
-    console.log("allcourses", allcourses)
+    // console.log("allcourses", allcourses)
 
     useEffect(() => {
         if (allcourses) {
@@ -39,8 +39,6 @@ const HomeMainComponent = () => {
     }, [allcourses]);
 
     const handleSearch = (searchTerm: any) => {
-
-        
         const lowercasedSearchTerm = searchTerm.toLowerCase();
         const filtered = allcourses?.filter((course: any) =>
             course.name.toLowerCase().includes(lowercasedSearchTerm) ||
