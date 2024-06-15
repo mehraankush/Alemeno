@@ -21,6 +21,7 @@ This project is a Course Management Platform where users can view, enroll in, an
   - Redux
   - React Query
   - TailwindCSS
+  - Shadcn/ui
 - **Backend**:
   - Firebase Firestore
   - Firebase Authentication
