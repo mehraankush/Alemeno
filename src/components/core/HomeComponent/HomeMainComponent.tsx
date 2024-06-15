@@ -1,9 +1,7 @@
 "use client"
 import Navbar from "@/components/common/Navbar";
 import CourseList from "@/components/core/CourseList";
-import { db } from "@/configs/firebase";
 import { useGetAllCourses } from "@/services/courses";
-import { addDoc, collection } from "firebase/firestore";
 import React, { useEffect } from "react";
 
 const HomeMainComponent = () => {

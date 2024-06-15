@@ -9,7 +9,7 @@ const CourseList = ({ allcourses }: any) => {
     const handleClick = (id: string) => (
         router.push(`course/${id}`)
     )
-    
+
     return (
         <div className='text-black'>
             {/* <button onClick={()=>addCourse()}>Add weeks</button> */}
@@ -17,8 +17,8 @@ const CourseList = ({ allcourses }: any) => {
                 allcourses && allcourses.length > 0 ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 items-center mt-5 pb-8">
                         {allcourses.map((course: any, i: number) => (
-                            <div key={i} onClick={() => handleClick(course.id)} className='cursor-pointer'>
-                                <CardComponent course={course} />
+                            <div key={i}>
+                                <CardComponent course={course} onclick={handleClick} />
                             </div>
                         ))}
                     </div>

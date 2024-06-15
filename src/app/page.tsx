@@ -1,5 +1,5 @@
-import HomeMainComponent from '@/components/core/HomeComponent/HomeMainComponent'
 import React from 'react'
+import HomeMainComponent from '@/components/core/HomeComponent/HomeMainComponent'
 
 const page = () => {
   return (
