@@ -6,7 +6,7 @@ import { toast } from "../ui/use-toast";
 import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "@/configs/firebase";
 import useAuth from "@/CustomHooks/use-user";
-import { Progress } from '@/components/ui/Progress'
+import { Progress } from "@/components/ui/progress"
 import useStoreUser from "@/CustomHooks/use-auth";
 type Props = {
   CourseBannerData: any;
