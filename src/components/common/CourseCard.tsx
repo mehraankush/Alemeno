@@ -94,7 +94,7 @@ function CourseCard({
   return (
     <>
       <div
-        className={`lg:absolute rounded-2xl p-4 sm:p-8 -bottom-[550px] right-[1rem] min-h-[600px] max-w-[423px] mx-auto lg:translate-y-0 translate-y-10 flex flex-col gap-4 bg-neutral-9 border-[rgba(255,255,255,0.10)] border shadow-md shadow-grey100 backdrop-blur-md z-40`}
+        className={`lg:absolute rounded-2xl p-4 sm:p-8 -bottom-[550px] right-[1rem] min-h-[600px] max-w-[423px] mx-auto lg:translate-y-0 translate-y-10 flex flex-col gap-4 bg-slate-100 border-[rgba(255,255,255,0.10)] border shadow-md shadow-grey100 backdrop-blur-md z-40`}
       >
         <Image
           src={CourseBannerData}
@@ -106,8 +106,8 @@ function CourseCard({
         />
         <div className="flex flex-col gap-y-4 mt-4">
           <p className="text-2xl gap-x-3 font-semibold flex-wrap items-center">{CourseCardData?.name}</p>
-          <div className="flex justify-between text-sm text-slate-300">
-            <p className="text-slate-200">{CourseCardData?.instructor}</p>
+          <div className="flex justify-between text-sm text-black">
+            <p className="text-black">{CourseCardData?.instructor}</p>
             <p>{CourseCardData?.duration}</p>
           </div>
           <div className="flex text-3xl gap-x-3 font-semibold flex-wrap items-center">
@@ -119,18 +119,18 @@ function CourseCard({
             </span>
           </div>
 
-          <div className={`text-white`}>
+          <div className={`text-black`}>
             <p className={`font-semibold text-xl mb-4`}>
               Prerequisites:
             </p>
             <div className="flex flex-col gap-3">
               {CourseCardData?.prerequisites?.map((pre: any, i: number) => (
-                <li key={i} className="text-slate-200">{pre}</li>
+                <li key={i} className="text-black">{pre}</li>
               ))}
             </div>
           </div>
 
-          <div className={`text-white`}>
+          <div className={`text-black`}>
             <div className="flex flex-col gap-3">
               {CourseCardData?.schedule}
             </div>

@@ -12,18 +12,18 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
 
 
     return (
-        <div className="min-h-screen bg-black flex justify-center ">
+        <div className="min-h-screen bg-white flex justify-center ">
 
-            <div className='text-white w-full'>
+            <div className='text-black w-full'>
                 {/* Hero Section */}
-                <div className={`w-full bg-[#19191A] relative px-4 sm:px-10 xl:px-0`}>
+                <div className={`w-full bg-white relative px-4 sm:px-10 xl:px-0 border-b border-slate-400`}>
                     <div className="mx-auto max-w-[1200px] pt-5 sm:pt-10 pb-20">
                         {/* Navigation */}
                         <div className="sm:flex hidden items-start gap-[0.375rem] text-base">
                             <div className="flex items-center gap-1">
                                 <Link
                                     href={"/"}
-                                    className="underline text-neutral-4 font-medium  hover:text-brand"
+                                    className="underline text-black font-medium  hover:text-brand"
                                 >
                                     Home
                                 </Link>
@@ -33,7 +33,7 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
                                 <ChevronRight className="w-5 h-5  " />
                                 <Link
                                     href={"/"}
-                                    className="text-neutral-4 font-medium underline  hover:text-brand"
+                                    className="text-black font-medium underline  hover:text-brand"
                                 >
                                     Course
                                 </Link>
@@ -41,7 +41,7 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
 
                             <div className="flex items-center gap-1">
                                 <ChevronRight className="w-5 h-5 " />
-                                <p className="text-neutral-4 font-medium capitalize  hover:text-brand">
+                                <p className="text-black font-medium capitalize  hover:text-brand">
                                     <p>{courseData?.name}</p>
                                 </p>
                             </div>
@@ -50,7 +50,7 @@ const CourseDetailsPage = ({ params }: { params: { id: string } }) => {
                         <div className="2xl:relative grid lg:grid-cols-2 grid-cols-1 gap-4 lg:gap-0 ">
                             {/* Text Content */}
                             <div
-                                className={`flex flex-col gap-3 space-y-5 place-self-start sm:mt-7 mt-2  xl:min-w-[710px] text-white`}
+                                className={`flex flex-col gap-3 space-y-5 place-self-start sm:mt-7 mt-2  xl:min-w-[710px] text-black`}
                             >
                                 <p className="text-lg font-medium">
                                     <p>Welcome to @dot-dev Family</p>

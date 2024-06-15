@@ -19,13 +19,13 @@ const CourseSyllabus = ({ id }: any) => {
             {
                 syllabus?.weeks && syllabus.weeks.map((week: any, i: number) => (
                     <Accordion key={i} type="single" collapsible
-                        className={`w-full  b-2 bg-neutral-10 mb-5 rounded-2xl border-2 border-slate-800 px-5 py-0`}
+                        className={`w-full bg-white mb-5 rounded-2xl border-2 border-slate-300 px-5 py-0`}
                     >
                         <AccordionItem value={`item-${i}-1`}
-                            className="border-b border-slate-800 px-2"
+                            className="px-2"
                         >
                             <AccordionTrigger className="flex justify-between relative text-slate-500">
-                                <p className="text-lg font-medium text-white capitalize">
+                                <p className="text-lg font-medium text-black capitalize">
                                     Week: {week.week}{'  '} {week.topic}
                                 </p>
                             </AccordionTrigger>

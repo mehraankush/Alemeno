@@ -28,20 +28,6 @@ const CourseOverview = ({ courseData }: Props) => {
             <div className="w-full">
                 <CourseSyllabus id={courseData?.syllabusId} />
             </div>
-            {/* Course Details Section */}
-            {/* <CourseDetailSection DetailSectionData={courseData?.attributes?.CourseOverview?.BasicDetails}/> */}
-
-            {/* Course Overview  */}
-            {/* <Overview OverviewData={courseData?.attributes?.CourseOverview?.WhatYouWillLearn}/> */}
-
-            {/* Course Content */}
-            {/* <CourseContent CourseSections={courseData?.attributes?.CourseSection}/> */}
-
-            {/* Instructor */}
-            {/* <MeetInstructor/> */}
-
-            {/* Testimonials */}
-            {/* <CourseTestimonial/> */}
 
         </div>
     );

@@ -44,10 +44,10 @@ const Icons = [
 
 const CourseDetailSection = () => {
     return (
-        <div className="w-full p-5 grid grid-cols-1 sm:grid-cols-2 place-content-start sm:place-content-center place-items-start border-[rgba(255,255,255,0.10)] border rounded-lg bg-neutral-10 gap-x-4 gap-y-8">
+        <div className="w-full p-5 grid grid-cols-1 sm:grid-cols-2 place-content-start sm:place-content-center place-items-start  border-slate-300 border rounded-lg bg-white gap-x-4 gap-y-8">
             {Icons?.map((card, idx) => (
                 <div className="flex flex-row gap-x-3 items-center" key={idx}>
-                    <IconBox className="border border-neutral-8 bg-neutral-9">
+                    <IconBox className="border border-slate-300 bg-white">
                         <card.icon />
                     </IconBox>
                     <p className="text-base font-normal">
