@@ -69,7 +69,7 @@ const EnrolledCourseCard = ({
       >
         <Image
           src={CourseBannerData}
-          className="md:max-w-full w-[400px] min-h-[180px] rounded-2xl overflow-hidden object-cover"
+          className="md:max-w-full w-[400px]  h-[260px] rounded-2xl overflow-hidden object-cover"
           alt="course image"
           width={400}
           quality={100}

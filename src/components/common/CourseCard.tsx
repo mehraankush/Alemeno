@@ -142,10 +142,10 @@ function CourseCard({
           <div className="flex items-center gap-4 self-stretch flex-col-reverse sm:flex-row sm:items-start">
 
             <button
-              onClick={() => handleEnroll(CourseCardData?.id)}
-              className={` ${CourseCardData?.enrolledStudents?.includes(user?.id) ? "bg-green-600 hover:bg-green-700" : "bg-indigo-600 hover:bg-indigo-700"} w-full text-center p-3 rounded-xl text-white h-auto `}
+              onClick={!user?.enrolledCourses?.includes(CourseCardData?.id) ? () => handleEnroll(CourseCardData?.id) : undefined}
+              className={` ${user?.enrolledCourses?.includes(CourseCardData?.id) ? "bg-green-600 hover:bg-green-700" : "bg-indigo-600 hover:bg-indigo-700"} w-full text-center p-3 rounded-xl text-white h-auto `}
             >
-              {CourseCardData?.enrolledStudents?.includes(user?.id) ? "Start Learning" : "Enroll Now"}
+              {user?.enrolledCourses?.includes(CourseCardData?.id) ? "Start Learning" : "Enroll Now"}
 
             </button>
           </div>
