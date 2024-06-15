@@ -69,7 +69,7 @@ const CardComponent = ({ course, onclick }: any) => {
 
   return (
     <Card>
-      <div className="bg-slate-100 border border-slate-200 text-black p-2 rounded-lg">
+      <div className="w-[400px] lg:w-full mx-auto bg-slate-100 border border-slate-200 text-black p-2 rounded-lg">
         <div className='cursor-pointer' onClick={() => onclick(course.id)}>
           <CardHeader className="px-2">
             <div className="border rounded-lg">
