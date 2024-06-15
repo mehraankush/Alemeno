@@ -42,7 +42,7 @@ const Dashboard = () => {
           );
 
           setCourses(coursesData.filter(course => course !== null));
-          console.log('coursesData', coursesData);
+          // console.log('coursesData', coursesData);
         }
       }
     } catch (error) {

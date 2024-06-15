@@ -47,7 +47,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
             if (!registerUser) {
                 mutate(userData, ({
                     onSuccess: (res) => {
-                        console.log("user login successfully", res)
+                        // console.log("user login successfully", res)
                         userData.id = res.id
                     },
                     onError: (err) => {
@@ -55,9 +55,7 @@ const Navbar = ({ onSearch }: NavbarProps) => {
                     },
                 }))
             }
-            console.log("befor euser setting")
             setUserData(userData)
-            console.log("afetr euser setting")
             toast({
                 duration: 2000,
                 title: "Login Successfuly",

@@ -21,6 +21,13 @@ const CardComponent = ({ course, onclick }: any) => {
   const user: any = useAuth()
 
   const likeCourse = async (courseId: string) => {
+    if (!user) {
+      toast({
+        duration: 1000,
+        title: "Yor are not loggedin cry 🥲",
+      });
+      return
+    }
     try {
       const courseRef = doc(db, 'course', courseId);
       const courseDoc = await getDoc(courseRef);
@@ -49,7 +56,7 @@ const CardComponent = ({ course, onclick }: any) => {
         title: "Thank you for your contribution 🥳",
       });
       queryClient.invalidateQueries({ queryKey: ["useGetAllCourses"] });
-      
+
     } catch (error: any) {
       console.error('Error liking course:', error.message);
       toast({
